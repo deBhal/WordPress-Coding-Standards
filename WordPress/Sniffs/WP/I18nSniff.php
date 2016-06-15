@@ -344,5 +344,17 @@ class WordPress_Sniffs_WP_I18nSniff extends WordPress_Sniff {
 		if ( empty( $non_placeholder_content ) ) {
 			$phpcs_file->addError( 'Strings should have translatable content', $stack_ptr, 'NoEmptyStrings' );
 		}
+
+		// ProperEllipses: Use them.
+		if ( strpos( $content, '...' ) ) {
+			$fix = $phpcs_file->addError( 'Use Ellipsis (…) rather than three full stops.', $stack_ptr, 'ProperEllipses' );
+
+			if ( true === $fix ) {
+				$fixed_str = str_replace( '...', '…', $content );
+				$phpcs_file->fixer->beginChangeset();
+				$phpcs_file->fixer->replaceToken( $stack_ptr, $fixed_str );
+				$phpcs_file->fixer->endChangeset();
+			}
+		}
 	}
 }

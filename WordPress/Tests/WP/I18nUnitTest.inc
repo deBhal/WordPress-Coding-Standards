@@ -106,3 +106,5 @@ __( '%s', 'my-slug' ); // Bad, don't waste translator's time
 __( '%1$s%2$s', 'my-slug' ); // Bad, don't waste translator's time
 _n( 'I have %d cat.', '%d', $number, 'my-slug' ); // Bad, move the logic out of the translation
 __( '\'%s\'', 'my-slug' ); // OK (ish. this is a technical test, not a great string)
+
+__( 'Use a proper ellipsis (…), not three full stops: ...', 'my-slug' ); // Ugly
